@@ -18,7 +18,7 @@ int main(void)
 			{
 				for (z = '0'; z <= '9'; z++)
 				{
-					if (((c != a) || (b != z)) && ((c + (b * 10)) < (a + (z * 10))))
+					if (((c != a) || (b != z)) && ((b + (c * 10)) < (z + (a * 10))))
 					{
 					putchar(c);
 					putchar(b);
