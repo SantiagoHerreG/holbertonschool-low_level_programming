@@ -15,16 +15,21 @@ int main(void)
 
 	int b = 0;
 
-	do {
-	a += 3 * n;
+	int c = 0;
+
+	while ((3 * n) < 1024)
+	{
+	a = a + (3 * n);
 	n++;
-	} while ((3 * n) < 1024);
+	}
 
-	do {
-	b += 5 * i;
+	while ((5 * i) < 1024)
+	{
+	b = b + (5 * i);
 	i++;
-	} while ((5 * i) < 1024);
+	}
 
-	printf("%d\n", (a + b));
+	c = (a + b);
+	printf("%d\n", c);
 return (0);
 }
