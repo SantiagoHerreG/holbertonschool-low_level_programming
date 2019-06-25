@@ -12,12 +12,12 @@ int main(void)
 	printf("Infinite loop incoming :(\n");
 
 	i = 0;
-/**
- *	while (i < 10)
- *	{
- *		putchar(i);
- *	}
- */
+
+/* commenting out an infinite loop while (i < 10)*/
+/*	{*/
+/*		putchar(i);*/
+/*	}*/
+/* Usage: commenting out infinite loop*/
 	printf("Infinite loop avoided! \\o/\n");
 
 	return (0);
