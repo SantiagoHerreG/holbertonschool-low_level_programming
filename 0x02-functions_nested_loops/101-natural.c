@@ -13,23 +13,21 @@ int main(void)
 
 	int i = 0;
 
-	int b = 0;
-
-	int c = 0;
-
-	while ((3 * n) < 1024)
+	while ((5 * n) < 1024)
 	{
-	a = a + (3 * n);
+	a = a + (5 * n);
 	n++;
 	}
 
-	while ((5 * i) < 1024)
+	while ((3 * i) < 1024)
 	{
-	b = b + (5 * i);
+	if (((3 * i) % 5) != 0)
+	{
+	a = a + (3 * i);
+	}
 	i++;
 	}
 
-	c = (a + b);
-	printf("%d\n", c);
+	printf("%d\n", a);
 return (0);
 }
