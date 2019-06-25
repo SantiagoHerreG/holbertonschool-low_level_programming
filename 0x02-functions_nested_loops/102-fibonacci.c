@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdio.h>
 /**
- * main - sum of multiples of 3 and 5 below 1024
+ * main - fibonacci numbers until 50
  * Return: total
  */
 
@@ -17,7 +17,6 @@ int main(void)
 	prev = new;
 	n++;
 	}
-	
 	printf("%li\n", prev);
 return (0);
 }
