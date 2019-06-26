@@ -1,20 +1,20 @@
 #include <stdio.h>
 /**
- * main - fibonacci numbers until 50
+ * main - fibonacci numbers until 91th
  * Return: total
  */
 
 int main(void)
 {
-	float n, new, prev = 1, ant = 1;
+	unsigned long n, new, prev = 1, ant = 1;
 
 	for (n = 1; n < 91; n++)
 	{
-	printf("%.0f,", prev);
-	new = prev + ant;
-	ant = prev;
-	prev = new;
+		printf("%lu, ", prev);
+		new = prev + ant;
+		ant = prev;
+		prev = new;
 	}
-	printf("%.0f\n", prev);
+	printf("%lu\n", prev);
 return (0);
 }
