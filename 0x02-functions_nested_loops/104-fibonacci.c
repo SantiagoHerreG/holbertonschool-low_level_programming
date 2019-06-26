@@ -1,4 +1,3 @@
-#include "holberton.h"
 #include <stdio.h>
 /**
  * main - fibonacci numbers until 50
@@ -7,7 +6,7 @@
 
 int main(void)
 {
-	unsigned long n = 0, new, prev = 1, ant = 1;
+	unsigned long n = 1, new, prev = 1, ant = 1;
 
 	while (n < 91)
 	{
