@@ -6,15 +6,14 @@
 
 int main(void)
 {
-	unsigned long n = 1, new, prev = 1, ant = 1;
+	unsigned long n, new, prev = 1, ant = 1;
 
-	while (n < 91)
+	for (n = 0; n < 91; n++)
 	{
 	printf("%lu, ", prev);
 	new = prev + ant;
 	ant = prev;
 	prev = new;
-	n++;
 	}
 	printf("%lu\n", prev);
 return (0);
