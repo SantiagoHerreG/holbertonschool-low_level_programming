@@ -10,7 +10,7 @@ int main(void)
 
 	for (n = 1; n < 91; n++)
 	{
-	printf("%.0f, ", prev);
+	printf("%.0f,", prev);
 	new = prev + ant;
 	ant = prev;
 	prev = new;
