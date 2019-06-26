@@ -14,7 +14,7 @@ int main(void)
 	new = prev + ant;
 	ant = prev;
 	prev = new;
-	if ((prev % 2) == 0)
+	if ((ant % 2) == 0)
 	n = n + ant;
 	}
 	printf("%li\n", n);
