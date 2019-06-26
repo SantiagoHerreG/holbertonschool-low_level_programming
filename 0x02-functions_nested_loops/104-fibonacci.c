@@ -8,7 +8,7 @@ int main(void)
 {
 	unsigned long n, new, prev = 1, ant = 1;
 
-	for (n = 1; n < 91; n++)
+	for (n = 1; n < 98; n++)
 	{
 		printf("%lu, ", prev);
 		new = prev + ant;
