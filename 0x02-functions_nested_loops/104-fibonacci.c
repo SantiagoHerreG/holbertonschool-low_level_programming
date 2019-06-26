@@ -11,12 +11,12 @@ int main(void)
 
 	while (n < 91)
 	{
-	printf("%li, ", prev);
+	printf("%lu, ", prev);
 	new = prev + ant;
 	ant = prev;
 	prev = new;
 	n++;
 	}
-	printf("%li\n", prev);
+	printf("%lu\n", prev);
 return (0);
 }
