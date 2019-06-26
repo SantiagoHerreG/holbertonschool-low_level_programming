@@ -6,15 +6,15 @@
 
 int main(void)
 {
-	unsigned long n, new, prev = 1, ant = 1;
+	unsigned long long int n, new, prev = 1, ant = 1;
 
-	for (n = 0; n < 91; n++)
+	for (n = 1; n < 91; n++)
 	{
-	printf("%lu, ", prev);
+	printf("%llu, ", prev);
 	new = prev + ant;
 	ant = prev;
 	prev = new;
 	}
-	printf("%lu\n", prev);
+	printf("%llu\n", prev);
 return (0);
 }
