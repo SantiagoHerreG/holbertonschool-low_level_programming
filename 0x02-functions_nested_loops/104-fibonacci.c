@@ -1,20 +1,39 @@
 #include <stdio.h>
 /**
- * main - fibonacci numbers until 91th
+ * main - fibonacci numbers until 98th
  * Return: total
  */
 
 int main(void)
 {
-	unsigned long n, new, prev = 1, ant = 1;
+	unsigned long newa, newb, anta = 0, antb = 1, a, b = 1;
 
-	for (n = 1; n < 98; n++)
+	while (b < 100000000000)
 	{
-		printf("%lu, ", prev);
-		new = prev + ant;
-		ant = prev;
-		prev = new;
+		printf("%lu, ", b);
+		newb = b + antb;
+		antb = b;
+		b = newb;
 	}
-	printf("%lu\n", prev);
+		a = b / 100000000000;
+		b = b % 100000000000;
+	while (a < 1400000000)
+	{
+		if (b % 100000000000 < 10000000000)
+		{
+		printf("%lu0%lu, ", a, b % 100000000000);
+		}
+		else
+		{
+		printf("%lu%lu, ", a, b % 100000000000);
+		}
+		newa = a + anta;
+		anta = a;
+		newb = (b + antb);
+		antb = b % 100000000000;
+		a = (newa + (newb / 100000000000));
+		b = newb % 100000000000;
+	}
+		printf("%lu%lu\n", a, b % 100000000000);
 return (0);
 }
