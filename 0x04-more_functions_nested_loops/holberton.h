@@ -1,6 +1,8 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 
+void print_diagonal(int n);
+void print_line(int n);
 void more_numbers(void);
 int _putchar(char c);
 int _isupper(int c);
