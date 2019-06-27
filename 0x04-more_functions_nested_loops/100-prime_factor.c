@@ -6,18 +6,18 @@
 
 int main(void)
 {
-	long i = 2, n = 61285247514;
+	long i = 2, n = 612852475143;
 
-	while (i < n)
+	while (i <= n)
 	{
 	if (n % i == 0)
 	{
 	n = n / i;
-	continue;
+	i++;
 	}
 	else
 	i++;
 	}
-	printf("%li\n", n);
+	printf("%li\n", i - 1);
 return (0);
 }
