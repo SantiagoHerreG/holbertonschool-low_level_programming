@@ -35,7 +35,8 @@ void print_number(int n)
         }
         else
 	{
-	_putchar('0');
+	a = a * 0;
+	_putchar('0' + a);
 	}
 	k = k % i;
 	i = i / 10;
