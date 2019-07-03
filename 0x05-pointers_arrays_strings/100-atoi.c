@@ -7,8 +7,10 @@
  */
 int _atoi(char *s)
 {
-	int i = 0, j = 0, n = 0;
+	int i = 0, j = 0;
 
+	unsigned int n = 0;
+	
 	while (s[i] != '\0')
 	{
 		if (s[i] == '-')
@@ -24,6 +26,6 @@ int _atoi(char *s)
 	if (i == 0)
 	return (0);
 	if (j % 2 != 0)
-	n = -n;
+	n =(int)-n;
 	return (n);
 }
