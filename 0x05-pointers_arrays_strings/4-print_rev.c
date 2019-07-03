@@ -8,6 +8,10 @@ void print_rev(char *s)
 {
 	int n, i = 0;
 
+	if (s[0] == '\0')
+	_putchar('\n');
+	else
+	{
 	for (n = 0; s[n] != '\0'; n++)
 	i = n;
 		while (i >= 0)
@@ -16,4 +20,5 @@ void print_rev(char *s)
 		i--;
 		}
 	_putchar('\n');
+	}
 }
