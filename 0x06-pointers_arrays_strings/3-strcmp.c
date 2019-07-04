@@ -10,20 +10,21 @@ int _strcmp(char *dest, char *src)
 {
 	int i = 0, k = 0;
 
-	for (i = 0; dest[i] != '\0'; i++)
+	while (dest[i] != '\0')
 	{
 		if (dest[i] > src[i])
 		{
-			k = 15;
+			k = dest[i] - src[i];
 			break;
 		}
 		else if (dest[i] < src[i])
 		{
-			k = -15;
+			k = dest[i] - src[i];
 			break;
 		}
+	i++;
 	}
 	if (src[i] != '\0' && k == 0)
-	k = -15;
+	k = -src[i];
 	return (k);
 }
