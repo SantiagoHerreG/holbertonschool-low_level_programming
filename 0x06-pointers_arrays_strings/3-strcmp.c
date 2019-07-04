@@ -14,16 +14,16 @@ int _strcmp(char *dest, char *src)
 	{
 		if (dest[i] > src[i])
 		{
-			k++;
+			k = 15;
 			break;
 		}
 		else if (dest[i] < src[i])
 		{
-			k--;
+			k = -15;
 			break;
 		}
 	}
 	if (src[i] != '\0' && k == 0)
-	k--;
+	k = -15;
 	return (k);
 }
