@@ -15,7 +15,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	;
 	for (b = 0; n2[b] != '\0'; b++)
 	;
-	if (b >= (size_r - 1) || a >= (size_r - 1))
+	if (b > (size_r - 1) || a > (size_r - 1))
 	return (0);
 
 	r[size_r] = '\0';
