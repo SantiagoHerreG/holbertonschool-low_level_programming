@@ -9,7 +9,9 @@
 void print_buffer(char *b, int size)
 {
 	int i = 0, k, a = 0;
-
+	
+	if (size > 0)
+	{
 	while (a <= size)
 	{
 	printf("%08x: ", a);
@@ -40,4 +42,7 @@ void print_buffer(char *b, int size)
 	a = a + 10;
 		printf("\n");
 	}
+	}
+	else
+	printf("\n");
 }
