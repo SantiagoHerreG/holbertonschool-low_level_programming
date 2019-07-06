@@ -15,19 +15,26 @@ void print_buffer(char *b, int size)
 	printf("%08x: ", a);
 	for (k = 0; k < 10; k++)
 	{
-		if (k + a <= size)
+		if (k + a < size)
 		{
 		printf("%02x", b[k + a]);
 		k++;
 		printf("%02x", b[k + a]);
 		printf(" ");
 		}
+		else
+		{
+		printf("  ");
+		k++;
+		printf(" ");
+		printf("  ");
+		}
 	}
 	for (i = 0; i < 10; i++)
 	{
-		if (b[a + i] > 10 && (a + i) <= size)
+		if (b[a + i] > 10 && (a + i) < size)
 		printf("%c", b[a + i]);
-		else if ((a + i) <= size + 1)
+		else if ((a + i) < size)
 		printf(".");
 	}
 	a = a + 10;
