@@ -12,7 +12,7 @@ void print_buffer(char *b, int size)
 
 	if (size > 0)
 	{
-	while (a <= size)
+	while (a < size)
 	{
 	printf("%08x: ", a);
 	for (k = 0; k < 10; k++)
@@ -21,8 +21,11 @@ void print_buffer(char *b, int size)
 		{
 		printf("%02x", b[k + a]);
 		k++;
+		if (k + a < size)
+		{
 		printf("%02x", b[k + a]);
 		printf(" ");
+		}
 		}
 		else
 		{
