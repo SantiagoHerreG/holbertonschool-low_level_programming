@@ -42,6 +42,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n = n / 10;
 	size_r--;
 	}
+	if (n != 0)
 	r[size_r] = (n + '0');
 	for (k = 0; r[k + size_r] != '\0'; k++)
 		r[k] = r[k + size_r];
