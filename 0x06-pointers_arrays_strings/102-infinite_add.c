@@ -23,7 +23,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	{
 	n = n + (n1[a - 1] - '0') + (n2[b - 1] - '0');
 	r[size_r] = (n % 10 + '0');
-	if (n >= 10)
 	n = n / 10;
 	a--;
 	b--;
@@ -40,7 +39,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n = n + (n2[b - 1] - '0');
 	b--;
 	r[size_r] = (n % 10 + '0');
-	if (n >= 10)
 	n = n / 10;
 	size_r--;
 	}
