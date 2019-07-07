@@ -15,14 +15,13 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	;
 	for (b = 0; n2[b] != '\0'; b++)
 	;
-	if (b >= (size_r - 1) || a >= (size_r - 1))
+	if (b > size_r || a > size_r)
 	return (0);
 	r[size_r] = '\0';
-	size_r--;
 	while (a > 0 && b > 0)
 	{
 	n = n + (n1[a - 1] - '0') + (n2[b - 1] - '0');
-	r[size_r] = (n % 10 + '0');
+	r[size_r - 1] = (n % 10 + '0');
 	n = n / 10;
 	a--;
 	b--;
@@ -38,14 +37,17 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	else
 	n = n + (n2[b - 1] - '0');
 	b--;
-	r[size_r] = (n % 10 + '0');
+	r[size_r - 1] = (n % 10 + '0');
 	n = n / 10;
 	size_r--;
 	}
 	if (n != 0)
-	r[size_r] = (n + '0');
-	for (k = 0; r[k + size_r] != '\0'; k++)
-		r[k] = r[k + size_r];
+	r[size_r - 1] = (n + '0');
+	if (size_r - 1 > 0)
+	{
+	for (k = 0; r[k + size_r - 1] != '\0'; k++)
+		r[k] = r[k + size_r - 1];
 		r[k] = '\0';
+	}
 return (r);
 }
