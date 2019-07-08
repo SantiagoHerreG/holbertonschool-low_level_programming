@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * memset - replaces n characters in a buffer
+ * _memset - replaces n characters in a buffer
  * @s: pointer to the buffer (memory space)
  * @b: character to be written
  * @n: number of positions to replace
