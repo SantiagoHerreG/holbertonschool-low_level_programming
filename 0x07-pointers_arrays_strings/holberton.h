@@ -1,6 +1,7 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 
+void set_string(char **s, char *to);
 void print_diagsums(int *a, int size);
 int _putchar(char c);
 void print_chessboard(char (*a)[8]);
