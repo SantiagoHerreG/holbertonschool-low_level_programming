@@ -10,20 +10,17 @@ char *_strchr(char *s, char c)
 	int i;
 
 	if (s[0] == '\0')
-	return (s);
+	return ('\0');
 	else
 	{
 	for (i = 0; s[i] != '\0'; i++)
 	{
 	if (s[i] == c)
-	{
-	s = s + i;
 	break;
 	}
 	}
-	}
 	if (s[i] == '\0')
-	return (s + i);
+	return ('\0');
 	else
-	return (s);
+	return (s + i);
 }
