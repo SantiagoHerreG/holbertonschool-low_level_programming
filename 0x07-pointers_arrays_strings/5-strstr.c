@@ -9,35 +9,37 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, a, needs = 0, sum = 0, k = 0;
 
+	char *phaystack = haystack;
+
 	for (needs = 0; needle[needs] != '\0'; needs++)
 	;
 
 	for (i = 0; haystack[i] != '\0'; i++)
 	{
-	sum = 0;
 	a = 0;
 	if (haystack[i] == needle[a])
 	{
-		for (a = 0; a <= needs; a++)
+		for (a = 0; a < needs; a++)
 		{
 			if (haystack[i] == needle[a])
 			{
 			sum = sum + 1;
 			i++;
 			}
-			if (sum == needs + 1)
+			if (sum == needs)
 			{
-			k = i - needs - 1;
-			haystack = haystack + k;
+			k = i - needs;
+			phaystack = haystack + k;
 			break;
 			}
 		}
-	}
-	if (sum == needs + 1)
+	if (sum == needs)
 	break;
+	sum = 0;
+	}
 	}
 	if (sum == 0)
 	return ('\0');
 	else
-	return (haystack);
+	return (phaystack);
 }
