@@ -9,10 +9,10 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, a, needs = 0, sum = 0, k = 0;
 
-	char *phaystack = haystack, *nul = "";
+	char *phaystack = haystack;
 
 	if (haystack[0] == '\0' || needle[0] == '\0')
-	return (nul);
+	return ('\0');
 	else
 	{
 	for (needs = 0; needle[needs] != '\0'; needs++)
@@ -42,7 +42,7 @@ char *_strstr(char *haystack, char *needle)
 	}
 	}
 	if (sum == 0)
-	return (nul);
+	return ('\0');
 	else
 	return (phaystack);
 	}
