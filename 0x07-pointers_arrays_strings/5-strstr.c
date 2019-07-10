@@ -38,7 +38,7 @@ char *_strstr(char *haystack, char *needle)
 	}
 	}
 	if (needle[0] == '\0')
-	return (haystack + i);
+	return (haystack);
 	else if (sum == 0)
 	return (0);
 	else
