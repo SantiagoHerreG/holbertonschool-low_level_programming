@@ -11,10 +11,6 @@ char *_strstr(char *haystack, char *needle)
 
 	char *phaystack = haystack;
 
-	if (haystack[0] == '\0' || needle[0] == '\0')
-	return ('\0');
-	else
-	{
 	for (needs = 0; needle[needs] != '\0'; needs++)
 	;
 	for (i = 0; haystack[i] != '\0'; i++)
@@ -41,9 +37,10 @@ char *_strstr(char *haystack, char *needle)
 	sum = 0;
 	}
 	}
-	if (sum == 0)
-	return ('\0');
+	if (needle[0] == '\0')
+	return (haystack + i);
+	else if (sum == 0)
+	return (0);
 	else
 	return (phaystack);
-	}
 }
