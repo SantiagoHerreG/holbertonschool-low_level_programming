@@ -15,8 +15,10 @@ int comp(char *s1, char *s2, int i, int k, int a, int b, int r)
 {
 	if (s2[k] == '*' && s1[i] == s2[k + 1] && (a - i) == (b - (k - r)))
 	return (comp(s1, s2, i, k + 1, a, b, r + 1));
-	else if ((s2[k] == s1[i] || s2[k] == '*') && (s2[k + 1] == '\0' || s2[k + 1]
-	== '*')  && s1[i + 1] == '\0')
+	if (s2[k] == '*' && s2[k + 1] == '*')
+	return (comp(s1, s2, i, k + 1, a, b, r + 1));
+	else if ((s2[k] == s1[i] || s2[k] == '*') && (s2[k + 1] == '\0' ||
+	s2[k + 1] == '*') && (s1[i + 1] == '\0' || s1[i] == '\0'))
 	return (1);
 	else if (s1[i] == s2[k])
 	return (comp(s1, s2, i + 1, k + 1, a, b, r));
