@@ -1,27 +1,31 @@
 #include "holberton.h"
 /**
- * palindrome - checks if a string is palindrome
- * @s: string
- * @i: index incremental
- * @k: index decremental
- * Return: 1 if palindrome
+ * comp - checks if two strings are equivalent with wildcards
+ * @s1: string
+ * @s2: string2
+ * @i: index string 1
+ * @k: index string 2
+ * Return: 1 if are equivalent
  */
 
-/*int palindrome(char *s, int i, int k)
+int comp(char *s1, char *s2, int i, int k)
 {
-	if (s[i] != s[k])
-	return (0);
-	else if (k - i == 1 && s[k] == s[i])
+	if (s2[k] == '*' && s1[i] == s2[k + 1])
+	return (comp(s1, s2, i, k + 1));
+else if ((s2[k] == s1[i] || s2[k] == '*') && (s2[k + 1] == '\0' || s2[k + 1] \
+== '*')  && s1[i + 1] == '\0')
 	return (1);
-	else if (k == i)
-	return (1);
+	else if (s1[i] == s2[k])
+	return (comp(s1, s2, i + 1, k + 1));
+	else if (s2[k] == '*')
+	return (comp(s1, s2, i + 1, k));
 	else
-	return (palindrome(s, i + 1, k - 1));
+	return (0);
 }
-*/
+
 /**
- * count - checks if a string is palindrome
- * @s: string
+ * count - string length
+ * @s1: string
  * @a: number of string elements
  * Return: number of characters
  */
@@ -32,6 +36,12 @@ int count(char *s1, int a)
 	else
 	return (count(s1, a + 1));
 }
+/**
+ * count2 - string length
+ * @s2: string
+ * @b: number of string elements
+ * Return: number of characters
+ */
 int count2(char *s2, int b)
 {
 	if (s2[b] == '\0')
@@ -42,19 +52,20 @@ int count2(char *s2, int b)
 	return (count2(s2, b + 1));
 }
 /**
- * is_palindrome - checks if a string is palindrome
- * @s: string
- * Return: 1 if palindrome
+ * wildcmp - compares two strings
+ * @s1: string
+ * @s2: string
+ * Return: 1 if are equivalent
  */
 int wildcmp(char *s1, char *s2)
 {
-	int a, b;
+	int a, b, c;
 
 	a = count(s1, 0);
 	b = count2(s2, 0);
-
 	if (b > a)
 	return (0);
 	else
-	return (1);
+	c = comp(s1, s2, 0, 0);
+	return (c);
 }
