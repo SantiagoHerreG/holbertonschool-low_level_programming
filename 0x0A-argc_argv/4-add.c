@@ -8,11 +8,13 @@
  */
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0, k = 0;
+	int i = 1, sum = 0, k = 0, a = 0;
 
 	while (i < argc)
 	{
 		if (atoi(argv[i]))
+		{
+			a += 1;
 			sum += atoi(argv[i]);
 		else
 		{
@@ -20,7 +22,7 @@ int main(int argc, char *argv[])
 		}
 		i++;
 	}
-	if (sum == 0)
+	if (a == 0)
 	{
 		printf("0\n");
 		return (0);
