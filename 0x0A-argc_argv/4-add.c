@@ -8,24 +8,29 @@
  */
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0;
+	int i = 1, sum = 0, k = 0;
 
-	if (argv[1] == '\0')
-	{
-		printf("0\n");
-		return (0);
-	}
 	while (i < argc)
 	{
 		if (atoi(argv[i]))
 			sum += atoi(argv[i]);
 		else
 		{
-			printf("Error\n");
-			return (1);
+			k += 1;
 		}
-	i++;
+		i++;
 	}
-		printf("%d\n", sum);
+	if (sum == 0)
+	{
+		printf("0\n");
 		return (0);
+	}
+	else if (k != 0)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	else
+		printf("%d\n", sum);
+	return (0);
 }
