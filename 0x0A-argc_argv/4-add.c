@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 		{
 			a += 1;
 			sum += atoi(argv[i]);
+		}
 		else
 		{
 			k += 1;
