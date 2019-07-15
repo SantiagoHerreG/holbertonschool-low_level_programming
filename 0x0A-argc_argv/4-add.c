@@ -8,32 +8,34 @@
  */
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0, k = 0, a = 0;
+	int i = 0, sum = 0, n, a = 0;
 
-	while (i < argc)
+	for (n = 1; n < argc; n++)
 	{
-		if (atoi(argv[i]))
+	i = 0;
+		while (argv[n][i] != '\0')
 		{
-			a += 1;
-			sum += atoi(argv[i]);
+			if (argv[n][i] < '0' || argv[n][i] > '9')
+			{
+			printf("Error\n");
+			return (1);
+			}
+		i++;
 		}
-		else
-		{
-			k += 1;
-		}
+	}
+	i = 1;
+	while (i < argc && atoi(argv[i]))
+	{
+		sum += atoi(argv[i]);
+		a += 1;
 		i++;
 	}
+
 	if (a == 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-	else if (k != 0)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	else
 		printf("%d\n", sum);
 	return (0);
 }
