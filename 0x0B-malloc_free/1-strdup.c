@@ -24,10 +24,11 @@ char *_strdup(char *str)
 	a = malloc(i + 1);
 
 	k = 0;
-	while (k <= i)
+	while (str[k] != 0)
 	{
 		a[k] = str[k];
 		k++;
 	}
+	a[k] = str[k];
 	return (a);
 }
