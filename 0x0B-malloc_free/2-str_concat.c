@@ -33,10 +33,15 @@ char *str_concat(char *s1, char *s2)
 	for (z = 0; z < i; z++)
 		a[z] = s1[z];
 
-	for (; z <= i + k - 1; z++)
+	if (k == 0)
+		a[z] = 0;
+	else
 	{
-		a[z] = *s2;
-		s2++;
+		for (; z <= i + k - 1; z++)
+		{
+			a[z] = *s2;
+			s2++;
+		}
 	}
 	return (a);
 }
