@@ -14,7 +14,7 @@ char *_strdup(char *str)
 
 	int i, k;
 
-	if (str[0] == 0)
+	if (str == 0)
 		return (NULL);
 
 	i = 0;
@@ -32,6 +32,6 @@ char *_strdup(char *str)
 		a[k] = str[k];
 		k++;
 	}
-	a[k] = str[k];
+	a[k] = 0;
 	return (a);
 }
