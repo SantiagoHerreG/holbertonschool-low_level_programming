@@ -14,7 +14,7 @@ char *_strdup(char *str)
 
 	int i, k;
 
-	if (str == NULL)
+	if (str[0] == 0)
 		return (NULL);
 
 	i = 0;
@@ -24,7 +24,7 @@ char *_strdup(char *str)
 	a = malloc(i);
 
 	k = 0;
-	while (k < i)
+	while (k <= i)
 	{
 		a[k] = str[k];
 		k++;
