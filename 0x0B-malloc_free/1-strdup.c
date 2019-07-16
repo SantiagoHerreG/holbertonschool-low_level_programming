@@ -23,6 +23,9 @@ char *_strdup(char *str)
 
 	a = malloc(i + 1);
 
+	if (a == NULL)
+		return (NULL);
+
 	k = 0;
 	while (str[k] != 0)
 	{
