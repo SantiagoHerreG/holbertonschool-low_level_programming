@@ -41,6 +41,7 @@ char **strtow(char *str)
 			}
 		a[x][k] = 0;
 		x++;
+		i--;
 		}
 		y = 0;
 		k = 0;
