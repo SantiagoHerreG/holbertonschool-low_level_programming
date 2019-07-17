@@ -8,9 +8,12 @@
  */
 char **strtow(char *str)
 {
-	int i = 0, k = 0, z = 0, x = 0, y = 0, j = 0;
+	int i = 0, k = 0, z = 0, x = 0, y = 0;
 
 	char **a;
+
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
 
 	for (i = 0; str[i] != 0; i++)
 	{
@@ -18,6 +21,8 @@ char **strtow(char *str)
 			z++;
 	}
 	a = malloc(sizeof(char *) * z);
+	if (a == NULL)
+		return (NULL);
 	for (i = 0; str[i] != 0; i++)
 	{
 		while (str[i] != ' ' && str[i] != 0)
@@ -28,23 +33,18 @@ char **strtow(char *str)
 		if (y != 0)
 		{
 		a[x] = malloc((y + 1) * sizeof(char));
+		if (a[x] == NULL)
+			return (NULL);
+			for (; str[i - y] != ' ' && str[i - y] != 0; y--)
+			{
+				a[x][k] = str[i - y];
+				k++;
+			}
+		a[x][k] = 0;
 		x++;
 		}
 		y = 0;
-	}
-	for (i = 0; str[i] != 0; i++)
-	{
-		if (str[i] != ' ' && str[i] != 0)
-		{
-			for (; str[i] != ' ' && str[i] != 0; i++)
-			{
-				a[j][k] = str[i];
-				k++;
-			}
-			a[j][k] = 0;
-			j++;
-		}
-	k = 0;
+		k = 0;
 	}
 	a[x] = NULL;
 	return (a);
