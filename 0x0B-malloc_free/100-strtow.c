@@ -30,17 +30,14 @@ char **strtow(char *str)
 			;
 		if (y != 0)
 		{
-		a[x] = malloc((y + 1) * sizeof(char));
-		if (a[x] == NULL)
-			return (NULL);
-			for (; str[i - y] != ' ' && str[i - y] != 0; y--)
-			{
-				a[x][k] = str[i - y];
-				k++;
-			}
-		a[x][k] = 0;
-		x++;
-		i--;
+			a[x] = malloc((y + 2) * sizeof(char));
+			if (a[x] == NULL)
+				return (NULL);
+				for (; str[i - y] != ' ' && str[i - y] != 0; y--, k++)
+					a[x][k] = str[i - y];
+			a[x][k] = '\0';
+			x++;
+			i--;
 		}
 		y = 0;
 		k = 0;
