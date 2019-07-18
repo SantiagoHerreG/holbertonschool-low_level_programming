@@ -19,16 +19,15 @@ char **strtow(char *str)
 		if (str[i] != ' ' && str[i] != 0 && (str[i + 1] == ' ' || str[i + 1] == 0))
 			z++;
 	}
+	if (z == 0)
+		return (NULL);
 	a = malloc(sizeof(char *) * z + 1);
 	if (a == NULL)
 		return (NULL);
 	for (i = 0; str[i] != 0; i++)
 	{
-		while (str[i] != ' ' && str[i] != 0)
-		{
-			y++;
-			i++;
-		}
+		for ( ; str[i] != ' ' && str[i] != 0; y++, i++)
+			;
 		if (y != 0)
 		{
 		a[x] = malloc((y + 1) * sizeof(char));
