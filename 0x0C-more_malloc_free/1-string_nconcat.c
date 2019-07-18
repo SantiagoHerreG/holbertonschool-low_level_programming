@@ -7,6 +7,7 @@
  * @s1: string one
  * @s2: string to be concatenated to string 1
  * @n: number of bytes of string 2 to be concatenated
+ * Return: pointer to a string allocated in the heap
  */
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
