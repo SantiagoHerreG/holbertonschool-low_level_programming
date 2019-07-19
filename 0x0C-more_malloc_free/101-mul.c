@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 {
 	char *r, *err = "Error";
 
-	int size_n1, size_n2, n, z, i, i2, f1, f2, lleva = 0, sum, k, m;
+	int size_n1, size_n2, n, z, i, i2, f1, f2, lleva = 0, sum = 0, k = 0, m = 0;
 
 	if (argc != 3)
 	{
@@ -57,8 +57,9 @@ int main(int argc, char **argv)
 	if (r == NULL)
 		exit(98);
 
-	for (z = 0; r[z] != 0; z++)
+	for (z = 0; z < size_n1 * size_n2 ; z++)
 		r[z] = '0';
+	r[z] = '\0';
 
 	for (i = size_n1 - 1; i >= 0; i--)
 	{
@@ -71,22 +72,22 @@ int main(int argc, char **argv)
 			f2 = argv[2][i2] - '0';
 			sum = f1 * f2 + (r[k + m] - '0') + lleva;
 			lleva = sum / 10;
-			r[k + m] = sum % 10 + '0';
+			r[k + m] = (sum % 10 + '0');
 			k++;
 		}
 
 		if (lleva > 0)
-			r[k + m] = (lleva + r[k + m] - '0') + '0';
+			r[k + m] = ((lleva + (r[k + m] - '0')) + '0');
 
 		m++;
 	}
 	z = size_n1 * size_n2;
-	while (z >= 0 && r[z] == '0')
+	while (z >= 0 && r[z - 1] == '0')
 		z--;
 
 	for ( ; z > 0; z--)
         {
-		_putchar(r[z]);
+		_putchar(r[z - 1]);
 	}
 	_putchar('\n');	
 
