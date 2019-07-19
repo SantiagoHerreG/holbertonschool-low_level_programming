@@ -1,74 +1,123 @@
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
- * infinite_add - prints an integer as if it were a string
- * @n1: integer to print
- * @n2: char
- * @r: buffer
- * @size_r: size
- * Return: void
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+int _putchar(char c)
 {
-	int a, b, n = 0, k = 0;
-
-	for (a = 0; n1[a] != '\0'; a++)
-	;
-	for (b = 0; n2[b] != '\0'; b++)
-	;
-	if (b >= (size_r - 1) || a >= (size_r - 1))
-	return (0);
-	r[size_r] = '\0';
-	while (a > 0 && b > 0)
-	{
-	n = n + (n1[a - 1] - '0') + (n2[b - 1] - '0');
-	r[size_r - 1] = (n % 10 + '0');
-	n = n / 10;
-	a--;
-	b--;
-	size_r--;
-	}
-	while (a > 0 || b > 0)
-	{
-	if (a > 0)
-	{
-	n = n + (n1[a - 1] - '0');
-	a--;
-	}
-	else
-	n = n + (n2[b - 1] - '0');
-	b--;
-	r[size_r - 1] = (n % 10 + '0');
-	n = n / 10;
-	size_r--;
-	}
-	if (n != 0)
-	r[size_r - 1] = (n + '0');
-	else
-	size_r++;
-	for (k = 0; r[k + size_r - 1] != '\0'; k++)
-		r[k] = r[k + size_r - 1];
-		r[k] = '\0';
-return (r);
+	return (write(1, &c, 1));
 }
 
 /**
- * main - Program that multiplies two big numbers passed as arguments
- * @argc: number of arguments, must be 3
- * @argv: array of pointers to arguments passed
- * Return: Void, prints the multiplication
+ * _puts - prints a string
+ * @str: pointer to the string
+ * Return: void
+ */
+void _puts(char *str)
+{
+	int n;
+
+	for (n = 0; str[n] != '\0'; n++)
+		{
+		_putchar(str[n]);
+		}
+	_putchar('\n');
+}
+
+
+/**
+ * main - progrma that multiplies two big numbers as strings
+ * @argc: Number of factors passed as arguments
+ * @argv: Array of pointers to the strings of the numbers
+ * Return: void, prints the result
  */
 
 int main(int argc, char **argv)
 {
+	char *r, *a, *err = "Error";
 
+	int size_n1, size_n2, n, z, i, i2, f1, f2, lleva = 0, sum, k, m;
 
+	if (argc != 3)
+	{
+		_puts(err);
+		exit(98);
+	}
 
+	for (n = 1; n < argc; n++)
+	{
+	i = 0;
+		while (argv[n][i] != '\0')
+		{
+			if (argv[n][i] < '0' || argv[n][i] > '9')
+			{
+				_puts(err);
+				exit(98);
+			}
+		i++;
+		}
+	}
 
+        for (size_n1 = 0; argv[1][size_n1] != '\0'; size_n1++)
+		;
 
+	for (size_n2 = 0; argv[2][size_n2] != '\0'; size_n2++)
+		;
 
+	if (size_n1 == 0 || size_n2 == 0)
+	{
+		_puts(err);
+		exit(98);
+	}
 
+	r = malloc(size_n1 * size_n2 + 1);
+	if (r == NULL)
+		exit(98);
 
+	for (z = 0; r[z] != 0; z++)
+		r[z] = '0';
 
+	for (i = size_n1 - 1; i >= 0; i--)
+	{
+		lleva = 0;
+		f1 = argv[1][i] - '0';
+		k = 0;
+
+		for (i2 = size_n2 - 1; i2 >= 0; i2--)
+		{
+			f2 = argv[2][i2] - '0';
+			sum = f1 * f2 + (r[k + m] - '0') + lleva;
+			lleva = sum / 10;
+			r[k + m] = sum % 10 + '0';
+			k++;
+		}
+
+		if (lleva > 0)
+			r[k + m] = (lleva + r[k + m] - '0') + '0';
+
+		m++;
+	}
+	z = size_n1 * size_n2;
+	while (z >= 0 && r[z] == '0')
+		z--;
+
+	i = 0;
+	a = malloc(z + 1);
+	while (z >= 0)
+	{
+		a[i] = r[z];
+		z--;
+		i++;
+	}
+	a[i] = '\0';
+
+	_puts(a);
+	return (0);
+}
