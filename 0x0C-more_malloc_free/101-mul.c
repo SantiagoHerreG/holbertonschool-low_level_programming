@@ -20,7 +20,6 @@ int _putchar(char c)
  * @argv: Array of pointers to the strings of the numbers
  * Return: void, prints the result
  */
-
 int main(int argc, char **argv)
 {
 	char *r, *err = "Error";
