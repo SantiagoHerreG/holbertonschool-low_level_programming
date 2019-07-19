@@ -1,7 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 /**
  * main - progrma that multiplies two big numbers as strings
@@ -52,7 +51,12 @@ int main(int argc, char **argv)
 		_putchar('\n');
 		exit(98);
 	}
-
+	if((size_n1 == 1 && argv[1][0] == '0') || (size_n2 == 1 && argv[2][0] == '0'))
+	{
+		_putchar('0');
+		_putchar('\n');
+		return(0);
+	}
 	r = malloc(size_n1 * size_n2 + 1);
 	if (r == NULL)
 		exit(98);
