@@ -1,4 +1,3 @@
-#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -16,23 +15,6 @@ int _putchar(char c)
 }
 
 /**
- * _puts - prints a string
- * @str: pointer to the string
- * Return: void
- */
-void _puts(char *str)
-{
-	int n;
-
-	for (n = 0; str[n] != '\0'; n++)
-		{
-		_putchar(str[n]);
-		}
-	_putchar('\n');
-}
-
-
-/**
  * main - progrma that multiplies two big numbers as strings
  * @argc: Number of factors passed as arguments
  * @argv: Array of pointers to the strings of the numbers
@@ -41,13 +23,15 @@ void _puts(char *str)
 
 int main(int argc, char **argv)
 {
-	char *r, *a, *err = "Error";
+	char *r, *err = "Error";
 
 	int size_n1, size_n2, n, z, i, i2, f1, f2, lleva = 0, sum, k, m;
 
 	if (argc != 3)
 	{
-		_puts(err);
+		for (i = 0; err[i] != '\0'; i++)
+			_putchar(err[i]);
+		_putchar('\n');
 		exit(98);
 	}
 
@@ -58,14 +42,16 @@ int main(int argc, char **argv)
 		{
 			if (argv[n][i] < '0' || argv[n][i] > '9')
 			{
-				_puts(err);
+				for (z = 0; err[z] != '\0'; z++)
+					_putchar(err[z]);
+				_putchar('\n');
 				exit(98);
 			}
 		i++;
 		}
 	}
 
-        for (size_n1 = 0; argv[1][size_n1] != '\0'; size_n1++)
+	for (size_n1 = 0; argv[1][size_n1] != '\0'; size_n1++)
 		;
 
 	for (size_n2 = 0; argv[2][size_n2] != '\0'; size_n2++)
@@ -73,7 +59,9 @@ int main(int argc, char **argv)
 
 	if (size_n1 == 0 || size_n2 == 0)
 	{
-		_puts(err);
+		for (z = 0; err[z] != '\0'; z++)
+			_putchar(err[z]);
+		_putchar('\n');
 		exit(98);
 	}
 
@@ -108,16 +96,12 @@ int main(int argc, char **argv)
 	while (z >= 0 && r[z] == '0')
 		z--;
 
-	i = 0;
-	a = malloc(z + 1);
-	while (z >= 0)
-	{
-		a[i] = r[z];
-		z--;
-		i++;
+	for ( ; z > 0; z--)
+        {
+		_putchar(r[z]);
 	}
-	a[i] = '\0';
+	_putchar('\n');	
 
-	_puts(a);
+	free(r);
 	return (0);
 }
