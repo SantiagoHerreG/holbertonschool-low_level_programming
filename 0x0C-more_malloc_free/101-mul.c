@@ -25,11 +25,13 @@ int main(int argc, char **argv)
 
 	int size_1, size_2, n, z = 0, i, i2, f1, f2, lleva = 0, sum = 0, k = 0, m = 0;
 
+	if (argc != 3)
+		printerr(err);
 	for (n = 1; n < argc; n++)
 	{
 		for (i = 0; argv[n][i] != '\0'; i++)
 		{
-			if (argv[n][i] < '0' || argv[n][i] > '9' || argc != 3)
+			if (argv[n][i] < '0' || argv[n][i] > '9')
 				printerr(err);
 			else if (argv[n][i] != '0')
 				z++;
