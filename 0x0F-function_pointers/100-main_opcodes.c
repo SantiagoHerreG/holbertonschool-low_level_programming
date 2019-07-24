@@ -12,6 +12,8 @@ int main(int argc, char **argv)
 {
 	int a;
 
+	unsigned int i;
+
 	if (argc != 2)
 	{
 		printf("Error\n");
@@ -26,7 +28,9 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	unsigned int *function_A = (unsigned int *) printf;
-
-	printf("%x\n", *function_A);
+	unsigned int *function_A = (unsigned int *) main;
+	for (i = 0; i < a; i++)
+	{
+	printf("%02x\n", *(function_A + i));
+	}
 }
