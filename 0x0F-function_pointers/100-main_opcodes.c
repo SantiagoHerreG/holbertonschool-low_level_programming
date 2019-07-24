@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
 	int a;
 
-	if (argc == 2)
+	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
@@ -25,5 +25,8 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(2);
 	}
-	printf("%p\n", &main);
+
+	unsigned int *function_A = (unsigned int *) printf;
+
+	printf("%x\n", *function_A);
 }
