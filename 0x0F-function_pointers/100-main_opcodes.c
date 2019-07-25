@@ -10,41 +10,41 @@ int main(int argc, char **argv)
 {
 	int a, b;
 
-	unsigned int i = 0, z;
+	unsigned int i = 0, z, k = 4;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-
 	a = atoi(argv[1]);
-
 	if (a < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-
 	unsigned int *ptr_main = (unsigned int *) main;
 
 	for (i = 0; (i * 4) < a; i++)
 	{
 		z = (*(ptr_main + i));
-		for (b = 0; b < 4 && (4 * i) + b < a - 1; b++)
+		for (b = 0; b < k && (4 * i) + b <= a - 1; b++)
 		{
-			if (z % 256 != 0)
-				printf("%02x ", z % 256);
-			z = z / 256;
-			if (z % 256 == 0 && b < 3)
+			if (i == 0 && b == 0)
+				printf("%02x", z % 256);
+			else if (z % 256 != 0)
+				printf(" %02x", z % 256);
+			if (z % 256 == 0 && b < 4)
 			{
 				a++;
-				b++;
+				k++;
+				z = z / 256;
 			}
+			else
+				z = z / 256;
 		}
-		if ((4 * i) + b == a - 1 && z % 256 != 0)
-			printf("%02x\n", z % 256);
-		else if (b < 4)
-			a = a + 4;
+		k = 4;
 	}
+	printf("\n");
+	return (0);
 }
