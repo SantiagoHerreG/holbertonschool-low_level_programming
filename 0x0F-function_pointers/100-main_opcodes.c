@@ -10,9 +10,9 @@
 
 int main(int argc, char **argv)
 {
-	int a;
+	int a, b;
 
-	unsigned int i;
+	unsigned int i = 0, z;
 
 	if (argc != 2)
 	{
@@ -29,8 +29,17 @@ int main(int argc, char **argv)
 	}
 
 	unsigned int *function_A = (unsigned int *) main;
-	for (i = 0; i < a; i++)
+
+	for (i = 0; (i * 4) < a; i++)
 	{
-	printf("%02x\n", *(function_A + i));
+		z = (*(function_A + i));
+		for (b = 0; b < 4 && (4 * i) + b < a - 1; b++)
+		{
+			printf("%x ", z % 256);
+			z = z / 256;
+		}
+		if ((4 * i) + b + 1 == a)
+			printf("%x\n", z % 256);
+		b = 0;
 	}
 }
