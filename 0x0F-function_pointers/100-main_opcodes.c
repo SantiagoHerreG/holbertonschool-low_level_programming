@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	int a, b;
 
-	unsigned int i = 0, z, k = 4;
+	unsigned int i = 0, z;
 
 	if (argc != 2)
 	{
@@ -28,22 +28,14 @@ int main(int argc, char **argv)
 	for (i = 0; (i * 4) < a; i++)
 	{
 		z = (*(ptr_main + i));
-		for (b = 0; b < k && (4 * i) + b <= a - 1; b++)
+		for (b = 0; b < 4 && (4 * i) + b <= a - 1; b++)
 		{
 			if (i == 0 && b == 0)
 				printf("%02x", z % 256);
-			else if (z % 256 != 0)
-				printf(" %02x", z % 256);
-			if (z % 256 == 0 && b < 4)
-			{
-				a++;
-				k++;
-				z = z / 256;
-			}
 			else
+				printf(" %02x", z % 256);
 				z = z / 256;
 		}
-		k = 4;
 	}
 	printf("\n");
 	return (0);
