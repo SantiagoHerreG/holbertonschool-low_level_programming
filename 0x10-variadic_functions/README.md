@@ -1,0 +1,1 @@
+# Project intended to learn how to use variadic functions, variable number of arguments passed to a function# Project intended to learn how to use variadic functions, variable number of arguments passed to a function
