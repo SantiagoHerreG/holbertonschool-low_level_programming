@@ -17,23 +17,31 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	unsigned int i;
 
-	if (separator == 0)
+	if (n == 0)
+	{
+		printf("\n");
 		return;
+	}
 
 	va_start(ap, n);
 
-	printf("%s", va_arg(ap, const char *));
+	a = va_arg(ap, const char *);
+
+	if (a)
+		printf("%s", a);
+	else
+		printf("(nil)");
 
 	for (i = 1; i < n; i++)
 	{
 		a = va_arg(ap, const char *);
-			if (a)
+			if (a && separator)
 				printf("%s%s", separator, a);
-			else
+			else if (separator && !a)
 				printf("%s(nil)", separator);
+			else if (a && !separator)
+				printf("%s", a);
 	}
-
 	printf("\n");
-
 	va_end(ap);
 }
