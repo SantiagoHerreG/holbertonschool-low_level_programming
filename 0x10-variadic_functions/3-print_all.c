@@ -21,7 +21,7 @@ void print_all(const char * const format, ...)
 		{
 			case 's':
 				b = va_arg(ap, char*);
-				if (b == 0 || b[0] == '\0')
+				if (b == 0)
 				{
 					printf("(nil)");
 					break;
