@@ -11,12 +11,14 @@
 
 void print_strings(const char *separator, const unsigned int n, ...)
 {
+	va_list ap;
+
+	const char *a;
+
+	unsigned int i;
+
 	if (separator == 0)
 		return;
-
-	va_list ap;
-	const char *a;
-	unsigned int i;
 
 	va_start(ap, n);
 
