@@ -15,6 +15,7 @@ void free_list(list_t *head)
 	while (store != NULL)
 	{
 		temp = store->next;
+		free(store->str);
 		free(store);
 		store = temp;
 	}
