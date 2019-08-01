@@ -1,0 +1,19 @@
+#ifndef __LISTS_H__
+#define __LISTS_H__
+
+/**
+ * struct list_s - structure containing an string, a number of chars and a ptr
+ * @str: string
+ * @len: the length of the string in a unsigned int
+ * @next: pointer to the structure data type
+ */
+typedef struct list_s
+{
+	char *str;
+	unsigned int len;
+	struct list_s *next;
+} list_t;
+
+unsigned int print_list(const list_t *h);
+
+#endif /* __LISTS_H__ */
