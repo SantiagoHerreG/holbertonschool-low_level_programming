@@ -9,10 +9,11 @@
 void print_all(const char * const format, ...)
 {
 	char *b;
-
 	int i = 0, z = 1;
-
 	va_list ap;
+
+	if (!format)
+		return;
 
 	va_start(ap, format);
 	while (format[i] != 0)
