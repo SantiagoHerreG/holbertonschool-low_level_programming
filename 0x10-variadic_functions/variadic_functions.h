@@ -6,6 +6,5 @@ int _putchar(char c);
 void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
-void print_commas(char, int);
 
 #endif /* __VARIADIC_FUNCTIONS_H__ */
