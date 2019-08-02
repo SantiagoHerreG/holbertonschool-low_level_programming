@@ -13,10 +13,12 @@ void print_all(const char * const format, ...)
 	va_list ap;
 
 	if (!format)
+	{
+		va_end(ap);
 		return;
-
+	}
 	va_start(ap, format);
-	while (format[i] != 0)
+	for (; format[i] != 0; i++, z++)
 	{
 		switch (format[i])
 		{
@@ -43,8 +45,6 @@ void print_all(const char * const format, ...)
 		}
 		if ((format[i + 1]) != 0 && z)
 			printf(", ");
-		z++;
-		i++;
 	}
 	va_end(ap);
 	printf("\n");
