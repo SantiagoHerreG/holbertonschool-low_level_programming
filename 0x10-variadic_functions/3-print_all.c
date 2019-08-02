@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "variadic_functions.h"
+#include <stdlib.h>
+/**
+ * print_commas - function that prints a comma and a space
+ * @character: next character in format string
+ * @counter: counter of elements already printed
+ * Return: void
+ */
+void print_commas(char character, int counter)
+{
+	if (character != '\0' && counter)
+		printf(", ");
+}
+
 /**
  * print_all - function that prints anything passed to it
  * @format: list of data type of arguments
@@ -13,22 +26,17 @@ void print_all(const char * const format, ...)
 	va_list ap;
 
 	if (!format)
-	{
-		va_end(ap);
 		return;
-	}
+
 	va_start(ap, format);
-	for (; format[i] != 0; i++, z++)
+	for (; format[i] != 0 && format; i++, z++)
 	{
 		switch (format[i])
 		{
 			case 's':
 				b = va_arg(ap, char*);
 				if (b == 0)
-				{
-					printf("(nil)");
-					break;
-				}
+					b = "(nil)";
 				printf("%s", b);
 				break;
 			case 'i':
@@ -43,8 +51,7 @@ void print_all(const char * const format, ...)
 			default:
 				z = 0;
 		}
-		if ((format[i + 1]) != 0 && z)
-			printf(", ");
+		print_commas((format[i + 1]), z);
 	}
 	va_end(ap);
 	printf("\n");
