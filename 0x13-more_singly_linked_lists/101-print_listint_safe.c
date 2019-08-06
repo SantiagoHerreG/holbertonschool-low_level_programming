@@ -9,7 +9,7 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *array[1000000], *last;
+	listint_t *array[10000], *last;
 
 	unsigned int i = 0, k = 0;
 
