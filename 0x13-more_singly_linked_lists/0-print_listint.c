@@ -1,6 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
-
+#include <stdlib.h>
 /**
  * print_listint - prints the data in the list (integers)
  * @h: pointer to the head of the list
