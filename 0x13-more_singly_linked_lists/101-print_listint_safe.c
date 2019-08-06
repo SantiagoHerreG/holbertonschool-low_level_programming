@@ -7,7 +7,7 @@
  * @head: pointer to the first node
  * Return: count of elements
  */
-unsigned int print_listint_safe(const listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
 	listint_t *array[1000000], *last;
 
@@ -20,8 +20,6 @@ unsigned int print_listint_safe(const listint_t *head)
 
 	while (last)
 	{
-		if (last == last->next)
-			exit(98);
 		for (k = 0; k < i; k++)
 		{
 			if (last == array[k])
