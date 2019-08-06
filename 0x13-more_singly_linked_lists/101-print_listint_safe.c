@@ -9,7 +9,7 @@
  */
 unsigned int print_listint_safe(const listint_t *head)
 {
-	listint_t *array[10000], *last;
+	listint_t *array[1000000], *last;
 
 	unsigned int i = 0, k = 0;
 
@@ -20,6 +20,8 @@ unsigned int print_listint_safe(const listint_t *head)
 
 	while (last)
 	{
+		if (last == last->next)
+			exit(98);
 		for (k = 0; k < i; k++)
 		{
 			if (last == array[k])
