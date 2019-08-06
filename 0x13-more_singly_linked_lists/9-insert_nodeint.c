@@ -2,6 +2,19 @@
 #include <stdlib.h>
 
 /**
+ * test_last_position - function that assigns new node in the last position
+ * @temp: pointer to last position of the list
+ * @new_node: pointer to new node to add
+ * Return: pointer to the new node
+ */
+listint_t *test_last_position(listint_t *temp, listint_t *new_node)
+{
+		temp->next = new_node;
+		new_node->next = NULL;
+		return (new_node);
+}
+
+/**
  * insert_nodeint_at_index - function that inserts a node in certain place
  * @head: pointer to the first element
  * @idx: index where is going to be placed the new node
@@ -18,10 +31,13 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		return (NULL);
 	new_node->n = n;
 	temp = *head;
-	if (idx == 0 && !(*head))
+	if (idx == 0)
 	{
+		if (!(head))
+			new_node->next = NULL;
+		else
+			new_node->next = temp;
 		*head = new_node;
-		new_node->next = NULL;
 		return (new_node);
 	}
 	else if (!(*head) && idx > 0)
@@ -29,13 +45,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		free(new_node);
 		return (NULL);
 	}
-	else if (idx == 0)
-	{
-		*head = new_node;
-		new_node->next = temp;
-		return (new_node);
-	}
-
 	while (temp->next)
 	{
 		if (k == idx)
@@ -48,6 +57,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		k++;
 		temp = temp->next;
 	}
+	if (k == idx)
+		return (test_last_position(temp, new_node));
 	free(new_node);
 	return (NULL);
 }
