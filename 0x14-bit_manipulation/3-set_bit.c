@@ -12,14 +12,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 
 	bit = bit << index;
 
-	if (bit > *n && *n != 0)
-		return (-1);
-
-	if (~(*n) & bit)
-	{
-		*n += bit;
+	*n |= bit;
 		return (1);
-	}
-	else
-		return (-1);
 }
