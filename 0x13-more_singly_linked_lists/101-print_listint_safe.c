@@ -14,7 +14,10 @@ size_t print_listint_safe(const listint_t *head)
 	unsigned int i = 0, k = 0;
 
 	if (!head)
+	{
+		printf("0\n");
 		exit(98);
+	}
 
 	last = (listint_t *)head;
 
