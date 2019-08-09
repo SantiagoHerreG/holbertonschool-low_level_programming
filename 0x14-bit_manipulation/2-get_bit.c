@@ -10,20 +10,18 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned long int bit = 1;
 
+	if (index > 63)
+		return (-1);
+
 	bit <<= index;
 
 	if (n == 0 && index == 0)
 		return (0);
 	else if (n == 1 && index == 0)
 		return (1);
-	else
-	{
-		if (bit > n)
-			return (-1);
 
-		if (bit & n)
-			return (1);
-		else
-			return (0);
-	}
+	if (bit & n)
+		return (1);
+
+	return (0);
 }
