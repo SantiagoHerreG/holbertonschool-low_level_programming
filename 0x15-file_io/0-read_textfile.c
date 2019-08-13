@@ -11,10 +11,10 @@
  * @letters: number of chars to be read and printed
  * Return: the number of chars printed or 0 if error
  */
-ssize_t read_textfile(const char *filename, size_t letters)
+long read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t read_chars, write_chars;
+	long read_chars, write_chars;
 	char buffer[letters];
 
 	if (!filename)
