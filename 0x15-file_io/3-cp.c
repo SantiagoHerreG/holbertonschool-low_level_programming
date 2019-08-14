@@ -26,7 +26,7 @@ void close_error(int fd)
 
 int main(int argc, char **argv)
 {
-	int fd_from, fd_to, read_char = 1, write_char, close_from, close_to;
+	int fd_from, fd_to, read_char = 1, write_char = 1, close_from, close_to;
 	char buffer[1024];
 
 	if (argc != 3)
