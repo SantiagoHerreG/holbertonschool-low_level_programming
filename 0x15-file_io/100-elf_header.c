@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <elf.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -14,7 +15,7 @@
 
 void read_error(char *argv)
 {
-	printf("Error: Can't read from file %s\n", argv);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
 	exit(98);
 }
 /**
@@ -40,7 +41,7 @@ void check_elf(Elf64_Ehdr *header)
 	}
 	else
 	{
-		printf("Format error, not an ELF\n");
+		dprintf(STDERR_FILENO, "Format error, not an ELF\n");
 		exit(98);
 	}
 }
