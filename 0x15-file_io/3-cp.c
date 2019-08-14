@@ -48,11 +48,11 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-
 	while (read_char > 0)
 	{
 		read_char = read(fd_from, buffer, 1024);
-		write_char = write(fd_to, buffer, read_char);
+		if (read_char > 0)
+			write_char = write(fd_to, buffer, read_char);
 		if (write_char < 0)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
