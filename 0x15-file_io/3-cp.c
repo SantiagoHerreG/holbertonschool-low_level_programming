@@ -6,6 +6,28 @@
 #include <stdlib.h>
 
 /**
+ * read_error - function that exits the program
+ * @argv: argument
+ * Return: void
+ */
+
+void read_error(char *argv)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+	exit(98);
+}
+/**
+ * write_error - function that exits the program
+ * @argv: argument
+ * Return: void
+ */
+
+void write_error(char *argv)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv);
+	exit(99);
+}
+/**
  * close_error - function that exits the program
  * @fd: file descriptor
  * Return: void
@@ -37,32 +59,29 @@ int main(int argc, char **argv)
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+		read_error(argv[1]);
 
 	fd_to = open(argv[2], O_CREAT | O_WRONLY, 0664);
 	if (fd_to < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+		write_error(argv[2]);
+
 	while (read_char > 0)
 	{
 		read_char = read(fd_from, buffer, 1024);
-		if (read_char > 0)
+		if (read_char < 0)
+			read_error(argv[1]);
+		if (read_char)
 			write_char = write(fd_to, buffer, read_char);
 		if (write_char < 0)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+			write_error(argv[2]);
 	}
 	close_from = close(fd_from);
+
 	if (close_from != 0)
 		close_error(fd_from);
+
 	close_to = close(fd_to);
+
 	if (close_to != 0)
 		close_error(fd_to);
 	return (0);
