@@ -14,7 +14,7 @@
 
 void read_error(char *argv)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+	printf("Error: Can't read from file %s\n", argv);
 	exit(98);
 }
 /**
@@ -40,7 +40,7 @@ void check_elf(Elf64_Ehdr *header)
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "Format error, not an ELF\n");
+		printf("Format error, not an ELF\n");
 		exit(98);
 	}
 }
@@ -56,14 +56,13 @@ void check_elf(Elf64_Ehdr *header)
 int main(int argc, char **argv)
 {
 	int fd64, read_char = 1;
+	Elf64_Ehdr *header, size;
 
 	if (argc != 2)
 	{
 		printf("Usage: elf_header elf_filename\n");
 		exit(98);
 	}
-
-	Elf64_Ehdr *header, size;
 
 	header = malloc(sizeof(size));
 
