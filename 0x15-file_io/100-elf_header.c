@@ -111,7 +111,7 @@ void check_type(Elf64_Ehdr *header)
 void check_entry(Elf64_Ehdr *header)
 {
 	if (header->e_entry)
-		printf("  Entry point address:               0x%lx\n", header->e_entry);
+		printf("  Entry point address:               0x%x\n", (int)header->e_entry);
 	else
 		printf("  Entry point address:               0\n");
 }
