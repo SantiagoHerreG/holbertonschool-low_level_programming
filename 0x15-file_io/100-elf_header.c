@@ -70,9 +70,9 @@ void check_data_ver(Elf64_Ehdr *header)
 		puts("  Data:                              2's complement, little endian");
 	if (header->e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("  Data:                              2's complement, big endian\n");
-	if (header->e_ident[EI_VERSION] == EV_NONE)
+	if (header->e_ident[EI_VERSION] != 1)
 		printf("  Version:                           1\n");
-	if (header->e_ident[EI_VERSION] == EV_CURRENT)
+	if (header->e_ident[EI_VERSION] == 1)
 		printf("  Version:                           1 (current)\n");
 	if (header->e_ident[EI_OSABI] == ELFOSABI_NONE)
 		printf("  OS/ABI:                            UNIX - System V\n");
