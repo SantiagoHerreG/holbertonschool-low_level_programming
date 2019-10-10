@@ -1,8 +1,8 @@
 # C - Hash tables
 
-## Descrption:
+## Description:
 
-# Project intended to learn the usage of hash tables and to building one from scratch. Objectives:
+### Project intended to learn the usage of hash tables and to building one from scratch. Objectives:
 
 1. What is a hash function
 2. What makes a good hash function
