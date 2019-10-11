@@ -11,11 +11,10 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t *new_node;
+	hash_node_t *new_node, *temp;
 
 	if (!key || !*key || !value)
 		return (0);
-
 	index = key_index((const unsigned char *)key, ht->size);
 
 	new_node = calloc(1, sizeof(hash_node_t));
@@ -28,16 +27,27 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!new_node->value)
 		return (0);
 
-	strcpy(new_node->key, key);
-	strcpy(new_node->value, value);
+	strcpy(new_node->key, key), strcpy(new_node->value, value);
 	new_node->next = NULL;
-
 	if (ht->array[index] == NULL)
 		ht->array[index] = new_node;
 	else
 	{
-		new_node->next = ht->array[index];
-		ht->array[index] = new_node;
+		temp = ht->array[index];
+		while (temp)
+		{
+			if (!strcmp(temp->key, key))
+			{
+				free(temp->value);
+				temp->value = calloc(strlen(value) + 1, 1);
+				if (!temp->value)
+					return (0);
+				strcpy(temp->value, value);
+				return (1);
+			}
+			temp = temp->next;
+		}
+		new_node->next = ht->array[index], ht->array[index] = new_node;
 	}
 	return (1);
 }
