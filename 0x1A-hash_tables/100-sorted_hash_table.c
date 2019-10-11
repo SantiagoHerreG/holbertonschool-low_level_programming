@@ -83,25 +83,34 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 void set_sorted_l(shash_table_t *ht, shash_node_t *new_node, const char *key)
 {
 	shash_node_t *temp;
+	unsigned int i = 0, flag = 0;
 
 	if (!ht->shead)
 	{
-		ht->shead = new_node;
-		ht->stail = new_node;
+		ht->shead = new_node, ht->stail = new_node;
 	}
 	else
 	{
-		temp = ht->shead;
-		while (temp)
+		for (temp = ht->shead; temp; temp = temp->snext)
 		{
-			if (key[0] < temp->key[0])
+			for (i = 0, flag = 0; key[i]; i++)
 			{
-				new_node->sprev = temp->sprev;
-				new_node->snext = temp;
-				temp->sprev = new_node;
-				break;
+				if (!temp->key[i] || (key[i] == temp->key[i]))
+					continue;
+				else if (key[i] < temp->key[i])
+				{
+					new_node->sprev = temp->sprev;
+					new_node->snext = temp;
+					if (temp->sprev)
+						temp->sprev->snext = new_node;
+					temp->sprev = new_node, flag++;
+					break;
+				}
+				else
+					break;
 			}
-			temp = temp->snext;
+			if (flag)
+				break;
 		}
 		if (ht->shead->sprev)
 			ht->shead = new_node;
@@ -110,8 +119,7 @@ void set_sorted_l(shash_table_t *ht, shash_node_t *new_node, const char *key)
 		if (!temp)
 		{
 			ht->stail->snext = new_node;
-			new_node->sprev = ht->stail;
-			ht->stail = new_node;
+			new_node->sprev = ht->stail, ht->stail = new_node;
 		}
 	}
 }
