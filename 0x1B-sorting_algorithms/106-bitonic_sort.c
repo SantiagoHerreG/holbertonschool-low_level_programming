@@ -14,7 +14,7 @@ void bitonic_merge(int *array, size_t lo, size_t hi, size_t count, size_t bit, s
 	
 	print_array(array + lo, hi - lo + 1);
 
-	split = (hi - lo) / 2 + 1;
+	split = (hi - lo) / 2 + 1 + lo;
 	if (hi - lo + 1 > 2)
 	{
 		bitonic_merge(array, lo, split - 1, count, 0, size);
@@ -41,6 +41,12 @@ void bitonic_merge(int *array, size_t lo, size_t hi, size_t count, size_t bit, s
 			}
 		}
 	}
+	if (bit == 0)
+		printf("Result [%lu/%lu] (UP):\n", hi - lo + 1, size);
+	else
+		printf("Result [%lu/%lu] (DOWN):\n", hi - lo + 1, size);
+		
+	print_array(array + lo, hi - lo + 1);
 }
 
 /**
