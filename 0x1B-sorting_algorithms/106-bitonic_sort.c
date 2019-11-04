@@ -61,6 +61,9 @@ void bitonic_sort(int *array, size_t size)
 {
 	size_t bit = 0, lo, hi;
 
+	if (!array || size <= 1)
+		return;
+
 	lo = 0;
 	hi = size - 1;
 	bitonic_merge(array, lo, hi, bit, size);
