@@ -11,6 +11,6 @@
 6. What are variables and how to set and use them
 
 ## USAGE:
-"""
+```
 make -f [makefile name]
-"""
+```
