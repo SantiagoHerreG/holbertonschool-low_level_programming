@@ -2,8 +2,7 @@ CC=gcc
 SRC=main.c holberton.c
 NAME=holberton
 .DEFAULT_GOAL=all
-obj1=main.o
-OBJ=$(obj1) holberton.o
+OBJ=$(SRC:.c=.o)
 main.o: main.c
 	$(CC)    -c -o main.o main.c
 
