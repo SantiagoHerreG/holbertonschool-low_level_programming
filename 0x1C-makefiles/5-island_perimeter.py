@@ -11,9 +11,16 @@ def one_direction_hor(grid, h, a):
 
     for i in range(h):
         for j in range(a):
-            if j == 0 or j + 1 == a:
+            if j == 0:
                 if grid[i][j] == 1:
                     count += 1
+                    if grid[i][j + 1] == 0:
+                        count += 1
+            if j + 1 == a:
+                if grid[i][j] == 1:
+                    count += 1
+                    if grid[i][j - 1] == 0:
+                        count += 1
             if grid[i][j] == 1:
                 if grid[i][j - 1] == 0:
                     count += 1
@@ -23,13 +30,23 @@ def one_direction_hor(grid, h, a):
 
 
 def one_direction_ver(grid, h, a):
-    """ Returns the oerimeter in vertical direction
+    """ Returns the perimeter in vertical direction
     """
 
     count = 0
 
     for i in range(h):
         for j in range(a):
+            if i == 0:
+                if grid[i][j] == 1:
+                    count += 1
+                    if grid[i + 1][j] == 0:
+                        count += 1
+            if i + 1 == a:
+                if grid[i][j] == 1:
+                    count += 1
+                    if grid[i - 1][j] == 0:
+                        count += 1
             if i == 0 or i + 1 == h:
                 if grid[i][j] == 1:
                     count += 1
