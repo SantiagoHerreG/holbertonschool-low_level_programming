@@ -14,14 +14,16 @@ def one_direction_hor(grid, h, a):
             if j == 0:
                 if grid[i][j] == 1:
                     count += 1
-                    if grid[i][j + 1] == 0:
+                    if a == 1:
                         count += 1
-            if j + 1 == a:
-                if grid[i][j] == 1:
+                    elif grid[i][j + 1] == 0:
+                        count += 1
+            elif j + 1 == a:
+                if (grid[i][j] == 1):
                     count += 1
                     if grid[i][j - 1] == 0:
                         count += 1
-            if grid[i][j] == 1:
+            elif (a > 1 and grid[i][j] == 1):
                 if grid[i][j - 1] == 0:
                     count += 1
                 if grid[i][j + 1] == 0:
@@ -40,17 +42,16 @@ def one_direction_ver(grid, h, a):
             if i == 0:
                 if grid[i][j] == 1:
                     count += 1
-                    if grid[i + 1][j] == 0:
+                    if h == 1:
                         count += 1
-            if i + 1 == a:
+                    elif grid[i + 1][j] == 0:
+                        count += 1
+            elif i + 1 == h:
                 if grid[i][j] == 1:
                     count += 1
                     if grid[i - 1][j] == 0:
                         count += 1
-            if i == 0 or i + 1 == h:
-                if grid[i][j] == 1:
-                    count += 1
-            if grid[i][j] == 1:
+            elif (h > 1 and grid[i][j] == 1):
                 if grid[i + 1][j] == 0:
                     count += 1
                 if grid[i - 1][j] == 0:
