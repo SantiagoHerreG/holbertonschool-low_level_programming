@@ -18,12 +18,12 @@ int binary_recursion(int *array, size_t li, size_t hi, int value)
 	printf("\n");
 
 	i = (hi - li) / 2 + li;
+	if (array[li] == value && array[hi] == value)
+		return (li);
 
 	if (array[i] == value)
 	{
-		if (i == 0)
-			return (i);
-		else if (array[i - 1] != value)
+		if (i == 0 || array[i - 1] != value)
 			return (i);
 		else
 			return (binary_recursion(array, li, i, value));
