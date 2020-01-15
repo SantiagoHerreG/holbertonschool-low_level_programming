@@ -1,5 +1,4 @@
 #include "search_algos.h"
-
 /**
  * interpolation_search - searches using the Interpolation search algorithm
  *
@@ -29,7 +28,12 @@ int interpolation_search(int *array, size_t size, int value)
 		}
 		printf("Value checked array[%li] = [%d]\n", pos, array[pos]);
 		if (array[pos] == value)
-			return (pos);
+		{
+			if (pos == 0 || array[pos - 1] != value)
+				return (pos);
+
+			high = pos - 1;
+		}
 		else if (low == high)
 			return (-1);
 		else if (array[pos] > value)
