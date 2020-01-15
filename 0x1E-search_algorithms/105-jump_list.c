@@ -29,10 +29,10 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			break;
 		i += m;
 	}
-	if (temp->n < value)
+	if (i >= size)
 	{
-		i = size - 1, current = list;
-		for (j = 0; j < i; j++)
+		current = temp;
+		while (current->next)
 			current = current->next;
 	}
 	else
