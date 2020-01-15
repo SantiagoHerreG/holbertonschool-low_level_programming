@@ -26,7 +26,7 @@ int binary_recursion(int *array, size_t li, size_t hi, int value)
 		else if (array[i - 1] != value)
 			return (i);
 		else
-			return (binary_recursion(array, li, i - 1, value));
+			return (binary_recursion(array, li, i, value));
 	}
 	else if (hi - li == 0)
 		return (-1);
