@@ -13,10 +13,8 @@ int binary_recursion(int *array, size_t li, size_t hi, int value)
 	size_t i;
 
 	printf("Searching in array: %d", array[li]);
-
 	for (i = li + 1; i <= hi; i++)
 		printf(", %d", array[i]);
-
 	printf("\n");
 
 	i = (hi - li) / 2 + li;
@@ -28,7 +26,7 @@ int binary_recursion(int *array, size_t li, size_t hi, int value)
 		else if (array[i - 1] != value)
 			return (i);
 		else
-			return (binary_recursion(array, i - 1, i, value));
+			return (binary_recursion(array, li, i - 1, value));
 	}
 	else if (hi - li == 0)
 		return (-1);
