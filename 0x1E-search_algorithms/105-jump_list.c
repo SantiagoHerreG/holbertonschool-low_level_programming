@@ -44,8 +44,6 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		printf("Value checked array[%li] = [%d]\n", current->index, current->n);
 		if (current->n == value)
 			return (current);
-		else if (current->n > value)
-			return (NULL);
 		current = current->next;
 	}
 	return (NULL);
