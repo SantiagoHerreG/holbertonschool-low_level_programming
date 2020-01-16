@@ -20,13 +20,10 @@ int binary_recursion(int *array, size_t li, size_t hi, int value)
 	i = (hi - li) / 2 + li;
 	if (array[li] == value)
 		return (li);
-
-	if (array[i] == value)
-		return (binary_recursion(array, li, i, value));
 	else if (hi - li == 0)
 		return (-1);
-	else if (array[i] > value)
-		return (binary_recursion(array, li, i - 1, value));
+	else if (array[i] >= value)
+		return (binary_recursion(array, li, i, value));
 	else
 		return (binary_recursion(array, i + 1, hi, value));
 }
