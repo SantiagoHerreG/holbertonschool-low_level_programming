@@ -16,11 +16,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 
 	if (!list)
 		return (NULL);
-
 	m = (size_t)sqrt(size);
-	i = m;
-	temp = list;
-	current = list;
+	i = m, temp = list, current = list;
 	while (i < size)
 	{
 		for (j = 0; j < m; j++)
@@ -38,8 +35,11 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			temp = temp->next;
 		printf("Value checked at index[%li] = [%d]\n", temp->index, temp->n);
 	}
-	printf("Value found between indexes [%li] and [%li]\n",
-	current->index, temp->index);
+	if (current != temp)
+	{
+		printf("Value found between indexes [%li] and [%li]\n",
+		current->index, temp->index);
+	}
 	while (current != temp->next)
 	{
 		printf("Value checked array[%li] = [%d]\n", current->index, current->n);
