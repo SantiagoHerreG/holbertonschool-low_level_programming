@@ -28,10 +28,11 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		printf("Value checked at index[%li] = [%d]\n", temp->index, temp->n);
 		if (temp->n >= value)
 			break;
-		current = temp;
+		if (temp->next)
+			current = temp;
 		i += m;
 	}
-	if (i >= size)
+	if (i >= size && temp->next)
 	{
 		while (temp->next)
 			temp = temp->next;
